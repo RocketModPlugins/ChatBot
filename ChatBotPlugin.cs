@@ -31,7 +31,7 @@ namespace DiscordBot
                 socket = IO.Socket(Configuration.Instance.Address);
                 Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerChatted += (Rocket.Unturned.Player.UnturnedPlayer player, ref UnityEngine.Color color, string message, EChatMode chatMode, ref bool cancel) =>
                 {
-                    if (chatMode == EChatMode.GLOBAL && !String.IsNullOrEmpty(player.Id) && player.Id != "0")
+                    if (chatMode == EChatMode.GLOBAL && !String.IsNullOrEmpty(player.Id) && player.Id != "0" && !message.StartsWith("/") && !message.StartsWith("@"))
                     {
                         string m = Translate("BRIDGE_CHAT_FORMAT", player.DisplayName, message);
                         if(Configuration.Instance.ShowRelayedMessages)
