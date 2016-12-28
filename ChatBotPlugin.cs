@@ -24,7 +24,7 @@ namespace DiscordBot
             }
         }
 
-        public override void LoadPlugin()
+        protected override void Load()
         {
             try
             {
